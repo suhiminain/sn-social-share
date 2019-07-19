@@ -1,0 +1,35 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 15/07/2019 03:03
+  	*/
+
+@font-face {
+  font-family: "snflaticon";
+  src: url("./snflaticon.eot");
+  src: url("./snflaticon.eot?#iefix") format("embedded-opentype"),
+       url("./snflaticon.woff2") format("woff2"),
+       url("./snflaticon.woff") format("woff"),
+       url("./snflaticon.ttf") format("truetype"),
+       url("./snflaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "snflaticon";
+    src: url("./snflaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="snflaticon-"]:before, [class*=" snflaticon-"]:before,
+[class^="snflaticon-"]:after, [class*=" snflaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.snflaticon-logo:before { content: "\f100"; }
+.snflaticon-twitter-logo-silhouette:before { content: "\f101"; }
+.snflaticon-whatsapp-logo:before { content: "\f102"; }
