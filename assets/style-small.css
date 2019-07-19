@@ -1,0 +1,70 @@
+
+/*=====================================
+== SN SOCIAL SHARE PLUGIN - SMALL
+=====================================*/
+
+.sn-social-sharer{
+  padding: 10px 0;
+    display: flex;
+  flex-wrap: wrap;
+   color: #fff;
+  font-size: 14px;
+  text-transform:uppercase;
+}
+
+.sn-social-sharer a:link,
+.sn-social-sharer a:hover,
+.sn-social-sharer a:visited{
+    color:#fff;
+    text-decoration:none;
+}
+
+.sn-social-sharer [class*='-share']{
+	padding: 3px 10px;
+   text-align: center;
+    text-decoration: none;
+  margin-right: 4px;
+}
+
+.fb-share{
+	background: #3b5998;
+}
+
+.tw-share{
+	background: #1da1f2;
+}
+
+.ws-share{
+	background: #25d366;
+}
+
+.sn-social-sharer [class*='-share'] span:before{
+  font-size: 14px;
+  font-family: snflaticon;
+  padding-right: 5px;
+  vertical-align: top;
+  display: inline-block;
+}
+
+.fb-share span:before{
+  content: "\f100";
+}
+
+
+.tw-share span:before{
+  content: "\f101";
+}
+
+
+.ws-share span:before{
+  content: "\f102";
+}
+
+@media only screen and (max-width: 480px) {
+
+    .sn-social-sharer [class*='-share']{
+        width:100%;
+        margin-bottom:4px;
+    }
+
+}
