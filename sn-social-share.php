@@ -63,11 +63,23 @@ class sn_social_share_plugin {
 			return;
 		}
 	
-		echo "<div class=\"sn-social-sharer top\">
-		<a href=\"https://www.facebook.com/sharer.php?u=".get_permalink()."\" class=\"fb-share\" rel=\"nofollow\"><span>Share</span></a>
-		<a href=\"https://twitter.com/intent/tweet?text=".get_the_title()."&url=".get_permalink()."\" class=\"tw-share\" rel=\"nofollow\"><span>Tweet</span></a>
-		<a href=\"https://api.whatsapp.com/send?text=".get_permalink()."\" class=\"ws-share\" rel=\"nofollow\"><span>Whatsapp</span></a>
-		</div>";
+		echo "<div class=\"sn-social-sharer top\">";
+		if ( get_option( 'sn_social_share_fb_enable' )=="on" ) {
+			echo "<a href=\"https://www.facebook.com/sharer.php?u=".get_permalink()."\" class=\"fb-share\" rel=\"nofollow\"><span>";
+			if ( get_option('sn_social_share_fb_text')) { echo get_option( 'sn_social_share_fb_text' );} else{ echo "Facebook";};
+			echo "</span></a>";
+		}
+		if ( get_option( 'sn_social_share_tw_enable' )=="on" ) {
+		    echo "<a href=\"https://twitter.com/intent/tweet?text=".get_the_title()."&url=".get_permalink()."\" class=\"tw-share\" rel=\"nofollow\"><span>";
+		    if ( get_option('sn_social_share_tw_text')) { echo get_option( 'sn_social_share_tw_text' );} else{ echo "Twitter";};
+		    echo "</span></a>";
+		}
+		if ( get_option( 'sn_social_share_ws_enable' )=="on" ) {
+		    echo "<a href=\"https://api.whatsapp.com/send?text=".get_permalink()."\" class=\"ws-share\" rel=\"nofollow\"><span>";
+		    if ( get_option('sn_social_share_ws_text')) { echo get_option( 'sn_social_share_ws_text' );} else{ echo "Whatsapp";};
+		    echo "</span></a>";
+		}
+		echo "</div>";
 	
 	}
 
@@ -82,20 +94,38 @@ class sn_social_share_plugin {
 			return;
 		}
 	
-		echo "<div class=\"sn-social-sharer bottom\">
-		<a href=\"https://www.facebook.com/sharer.php?u=".get_permalink()."\" class=\"fb-share\" rel=\"nofollow\"><span>Share</span></a>
-		<a href=\"https://twitter.com/intent/tweet?text=".get_the_title()."&url=".get_permalink()."\" class=\"tw-share\" rel=\"nofollow\"><span>Tweet</span></a>
-		<a href=\"https://api.whatsapp.com/send?text=".get_permalink()."\" class=\"ws-share\" rel=\"nofollow\"><span>Whatsapp</span></a>
-		</div>";
+		echo "<div class=\"sn-social-sharer top\">";
+		if ( get_option( 'sn_social_share_fb_enable' )=="on" ) {
+			echo "<a href=\"https://www.facebook.com/sharer.php?u=".get_permalink()."\" class=\"fb-share\" rel=\"nofollow\"><span>";
+			if ( get_option('sn_social_share_fb_text')) { echo get_option( 'sn_social_share_fb_text' );} else{ echo "Facebook";};
+			echo "</span></a>";
+		}
+		if ( get_option( 'sn_social_share_tw_enable' )=="on" ) {
+		    echo "<a href=\"https://twitter.com/intent/tweet?text=".get_the_title()."&url=".get_permalink()."\" class=\"tw-share\" rel=\"nofollow\"><span>";
+		    if ( get_option('sn_social_share_tw_text')) { echo get_option( 'sn_social_share_tw_text' );} else{ echo "Twitter";};
+		    echo "</span></a>";
+		}
+		if ( get_option( 'sn_social_share_ws_enable' )=="on" ) {
+		    echo "<a href=\"https://api.whatsapp.com/send?text=".get_permalink()."\" class=\"ws-share\" rel=\"nofollow\"><span>";
+		    if ( get_option('sn_social_share_ws_text')) { echo get_option( 'sn_social_share_ws_text' );} else{ echo "Whatsapp";};
+		    echo "</span></a>";
+		}
+		echo "</div>";
 	
 	}
 	
     /* default setting value */
     function install_sn_social_share() {
-     $kn_plugin="sn_social_share";
-     add_option( $kn_plugin."_style", "default" );
-     add_option( $kn_plugin."_top", "on" );
-     add_option( $kn_plugin."_bottom", "on" );
+        $kn_plugin="sn_social_share";
+        add_option( $kn_plugin."_fb_text", "" );
+        add_option( $kn_plugin."_fb_enable", "on" );
+        add_option( $kn_plugin."_tw_text", "" );
+        add_option( $kn_plugin."_tw_enable", "on" );
+        add_option( $kn_plugin."_ws_text", "" );
+        add_option( $kn_plugin."_ws_enable", "on" );
+        add_option( $kn_plugin."_style", "default" );
+        add_option( $kn_plugin."_top", "on" );
+        add_option( $kn_plugin."_bottom", "on" );
     }
 
      /* add sub-menu */
@@ -105,6 +135,12 @@ class sn_social_share_plugin {
 	
      /* settings */
     function register_sn_social_share_settings() {
+        register_setting( 'sn_social_share_group', 'sn_social_share_fb_enable' );
+        register_setting( 'sn_social_share_group', 'sn_social_share_fb_text' );
+        register_setting( 'sn_social_share_group', 'sn_social_share_tw_enable' );
+        register_setting( 'sn_social_share_group', 'sn_social_share_tw_text' );
+        register_setting( 'sn_social_share_group', 'sn_social_share_ws_enable' );
+        register_setting( 'sn_social_share_group', 'sn_social_share_ws_text' );
         register_setting( 'sn_social_share_group', 'sn_social_share_style' );
     	register_setting( 'sn_social_share_group', 'sn_social_share_top' );
     	register_setting( 'sn_social_share_group', 'sn_social_share_bottom' );
@@ -131,6 +167,7 @@ class sn_social_share_plugin {
     			</select>
     			</td>
     		</tr>
+    		<!-- location -->
     		<tr>
     			<th scope="row"><label for="blogname">Social Share Button Location</label></th>
     			<td>
@@ -145,7 +182,32 @@ class sn_social_share_plugin {
     			</fieldset>
     			</td>
     		</tr>
-    
+    		<!-- text -->
+    		<tr>
+    			<th scope="row"><label for="sn_social_share_fb_text">Social Network</label></th>
+    			<td>
+                        <p>
+    					<label for="sn_social_share_fb_enable">
+    						<input name="sn_social_share_fb_enable" type="checkbox" id="sn_social_share_fb_enable" <?php if(get_option( 'sn_social_share_fb_enable' )=="on"){ echo "checked='checked'"; } ?> > Facebook :
+    					</label>
+                        <input name="sn_social_share_fb_text" type="text" id="sn_social_share_fb_text" value="<?php if(get_option( 'sn_social_share_fb_text' )){ echo get_option( 'sn_social_share_fb_text' ); } ?>">
+                        </p>
+                        <p>
+    					<label for="sn_social_share_tw_enable">
+    						<input name="sn_social_share_tw_enable" type="checkbox" id="sn_social_share_tw_enable" <?php if(get_option( 'sn_social_share_tw_enable' )=="on"){ echo "checked='checked'"; } ?> > Twitter :
+    					</label>
+    			        <input name="sn_social_share_tw_text" type="text" id="sn_social_share_tw_text" value="<?php if(get_option( 'sn_social_share_tw_text' )){ echo get_option( 'sn_social_share_tw_text' ); } ?>">
+                        </p>
+                        <p>
+    					<label for="sn_social_share_ws_enable">
+    						<input name="sn_social_share_ws_enable" type="checkbox" id="sn_social_share_ws_enable" <?php if(get_option( 'sn_social_share_ws_enable' )=="on"){ echo "checked='checked'"; } ?> > Whatsapp :
+    					</label>
+    			        <input name="sn_social_share_ws_text" type="text" id="sn_social_share_ws_text" value="<?php if(get_option( 'sn_social_share_ws_text' )){ echo get_option( 'sn_social_share_ws_text' ); } ?>">
+                        </p>
+
+    			</td>
+    		</tr>
+
     	</tbody>
     </table>
     		<p class="submit"><input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
