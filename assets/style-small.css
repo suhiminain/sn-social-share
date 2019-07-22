@@ -8,8 +8,7 @@
     display: flex;
   flex-wrap: wrap;
    color: #fff;
-  font-size: 14px;
-  text-transform:uppercase;
+  line-height: 1;
 }
 
 .sn-social-sharer a:link,
@@ -20,10 +19,11 @@
 }
 
 .sn-social-sharer [class*='-share']{
-	padding: 3px 10px;
+	padding: 10px;
    text-align: center;
     text-decoration: none;
-  margin-right: 4px;
+   /*! width: 33%; */
+	margin-right: 5px;
 }
 
 .fb-share{
@@ -39,10 +39,10 @@
 }
 
 .sn-social-sharer [class*='-share'] span:before{
-  font-size: 14px;
+  font-size: 15px;
   font-family: snflaticon;
   padding-right: 5px;
-  vertical-align: top;
+  vertical-align: middle;
   display: inline-block;
 }
 
