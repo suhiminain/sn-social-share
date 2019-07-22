@@ -39,13 +39,7 @@ class sn_social_share_plugin {
     /* social share - style */
 	function genesis_sp_share_style() {
 	
-    if(get_option( 'sn_social_share_style' )=="default"){	
 		wp_register_style('sn-share-style', SN_SOCIAL_SHARE_URL.'/assets/style.css',array(),SN_SOCIAL_SHARE_VERSION);
-    }
-	
-    if(get_option( 'sn_social_share_style' )=="small"){	
-		wp_register_style('sn-share-style', SN_SOCIAL_SHARE_URL.'/assets/style-small.css',array(),SN_SOCIAL_SHARE_VERSION);
-    }
 		wp_register_style('sn-share-font', SN_SOCIAL_SHARE_URL.'/assets/fonts/snflaticon.css',array(),SN_SOCIAL_SHARE_VERSION);
 		wp_enqueue_style('sn-share-font');
 		wp_enqueue_style('sn-share-style');
@@ -93,7 +87,6 @@ class sn_social_share_plugin {
     /* default setting value */
     function install_sn_social_share() {
      $kn_plugin="sn_social_share";
-     add_option( $kn_plugin."_style", "default" );
      add_option( $kn_plugin."_top", "on" );
      add_option( $kn_plugin."_bottom", "on" );
     }
@@ -105,7 +98,6 @@ class sn_social_share_plugin {
 	
      /* settings */
     function register_sn_social_share_settings() {
-        register_setting( 'sn_social_share_group', 'sn_social_share_style' );
     	register_setting( 'sn_social_share_group', 'sn_social_share_top' );
     	register_setting( 'sn_social_share_group', 'sn_social_share_bottom' );
     }
@@ -123,16 +115,7 @@ class sn_social_share_plugin {
     	<tbody>
     		<!-- visibility -->
     		<tr>
-    			<th scope="row"><label for="blogname">Social Share Button Location</label></th>
-    			<td>
-    			<select name="sn_social_share_style">
-    			     <option value="default" <?php if(get_option( 'sn_social_share_style' )=="default"){ echo "selected"; } ?>>Default</option>
-    			     <option value="small" <?php if(get_option( 'sn_social_share_style' )=="small"){ echo "selected"; } ?>>Small</option>
-    			</select>
-    			</td>
-    		</tr>
-    		<tr>
-    			<th scope="row"><label for="blogname">Social Share Button Location</label></th>
+    			<th scope="row"><label for="blogname">Sharebar Visibility</label></th>
     			<td>
     			<fieldset>
     					<label for="sn_social_share_top">
