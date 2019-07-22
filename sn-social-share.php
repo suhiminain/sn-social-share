@@ -159,7 +159,7 @@ class sn_social_share_plugin {
     	<tbody>
     		<!-- visibility -->
     		<tr>
-    			<th scope="row"><label for="blogname">Social Share Button Location</label></th>
+    			<th scope="row"><label for="blogname">Social Share Button Style</label></th>
     			<td>
     			<select name="sn_social_share_style">
     			     <option value="default" <?php if(get_option( 'sn_social_share_style' )=="default"){ echo "selected"; } ?>>Default</option>
